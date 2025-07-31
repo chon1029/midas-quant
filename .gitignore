@@ -1,9 +1,64 @@
-# Dependencies
+# ===== MIDAS QUANT GITIGNORE =====
+
+# 🔐 민감한 정보 (절대 커밋하면 안됨!)
+*.env
+.env*
+!.env.example
+
+# 키움증권 API 관련 민감 정보
+**/kiwoom_credentials*
+**/api_keys*
+**/trading_keys*
+**/*password*
+**/*secret*
+**/*token*
+kiwoom_config.json
+trading_config.json
+account_*.json
+portfolio_*.json
+orders_*.json
+*.p12
+*.pfx
+*.key
+*.pem
+*.crt
+
+# 개인 설정 파일
+.kiro/settings/
+~/.midas_quant/
+**/.midas_quant/
+
+# 실거래 관련 데이터
+**/real_trading_data/
+**/live_orders/
+**/account_info/
+**/transaction_history/
+**/portfolio_snapshots/
+**/balance_history/
+**/profit_loss_data/
+trading_results_*.csv
+portfolio_*.xlsx
+account_statement_*.pdf
+
+# ===== 개발 환경 =====
+
+# Node.js
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
 .Python
 build/
 develop-eggs/
@@ -17,26 +72,80 @@ parts/
 sdist/
 var/
 wheels/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-PIPFILE.lock
+MANIFEST
+venv/
+env/
+ENV/
+.venv/
+.ENV/
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# ===== 데이터베이스 =====
+*.db
+*.sqlite
+*.sqlite3
+kingmaker_quant.db
+midas_quant.db
 
-# IDE
+# PostgreSQL
+*.sql
+*.dump
+pg_data/
+
+# Redis
+dump.rdb
+*.rdb
+
+# InfluxDB
+influxdb_data/
+
+# ===== 로그 파일 =====
+logs/
+*.log
+log/
+*.log.*
+
+# ===== 백업 파일 =====
+backups/
+*.backup
+*.bak
+*.tmp
+*.temp
+
+# ===== IDE 및 에디터 =====
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+.DS_Store
+Thumbs.db
 
-# OS
+# ===== 빌드 결과물 =====
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+
+# ===== 테스트 =====
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# ===== Docker =====
+.dockerignore
+docker-compose.override.yml
+
+# ===== 운영체제 =====
 .DS_Store
 .DS_Store?
 ._*
@@ -45,77 +154,21 @@ PIPFILE.lock
 ehthumbs.db
 Thumbs.db
 
-# Logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# Docker
-.dockerignore
-
-# Backup files
-*.bak
-*.backup
+# ===== 임시 파일 =====
 *.tmp
+*.temp
+*.swp
+*.swo
+*~
 
-# Coverage reports
-coverage/
-*.cover
-.coverage
-.coverage.*
-.cache
-.pytest_cache/
+# ===== 개인 메모 =====
+NOTES.md
+TODO.md
+PERSONAL.md
+memo.txt
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# Environments
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Frontend build
-frontend/dist/
-frontend/build/
-
-# Backend specific
-backend/logs/
-backend/*.db
-backend/alembic/versions/*.py
-!backend/alembic/versions/__init__.py
-
-# Kiwoom API credentials
-kiwoom_credentials.json
-api_keys.enc
-
-# Trading data
-trading_data/
-backups/
-
-# Sensitive files
-*.key
-*.pem
-*.crt
-*.p12
-
-# Local configuration
-local_config.json
-user_settings.json
+# ===== 하지만 포함해야 할 파일들 =====
+!.env.example
+!.gitkeep
+!README.md
+!CHANGELOG.md
